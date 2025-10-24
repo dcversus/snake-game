@@ -2,7 +2,9 @@
 
 [![GitHub Pages](https://img.shields.io/badge/demo-live-success?style=for-the-badge&logo=github)](https://dcversus.github.io/snake-game/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge)](https://opensource.org/licenses/MIT)
-[![CI/CD](https://img.shields.io/github/actions/workflow/status/dcversus/snake-game/deploy.yml?style=for-the-badge&label=CI/CD)](https://github.com/dcversus/snake-game/actions)
+[![Quality](https://img.shields.io/github/actions/workflow/status/dcversus/snake-game/quality.yml?style=for-the-badge&label=Quality)](https://github.com/dcversus/snake-game/actions)
+[![Tests](https://img.shields.io/badge/tests-15%20passing-success?style=for-the-badge)](https://github.com/dcversus/snake-game/actions)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.7-blue?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
 [![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/HTML)
 [![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 [![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)](https://developer.mozilla.org/en-US/docs/Web/CSS)
@@ -44,11 +46,12 @@
 
 ### 🛠️ Стек технологий
 
-- Чистый **HTML5** Canvas
-- Vanilla **JavaScript** (ES6+)
-- **CSS3** с градиентами и анимациями
+- **TypeScript** — строгая типизация
+- **Vite** — быстрый zero-config бандлер
+- **HTML5** Canvas для рендеринга
+- **Vitest** — unit-тестирование
 - **GitHub Pages** для хостинга
-- **GitHub Actions** для автоматического деплоя
+- **GitHub Actions** для CI/CD
 
 ## 🚀 Локальный запуск
 
@@ -59,36 +62,64 @@ git clone https://github.com/dcversus/snake-game.git
 # Перейти в папку
 cd snake-game
 
-# Открыть в браузере
-open index.html
-# или для Linux
-xdg-open index.html
-# или для Windows
-start index.html
+# Установить зависимости
+npm install
+
+# Запустить dev-сервер
+npm run dev
+
+# Или собрать для production
+npm run build
+npm run preview
 ```
 
-Либо просто откройте файл `index.html` в любом современном браузере.
+## 🧪 Разработка
+
+```bash
+# Запустить тесты
+npm test
+
+# Запустить тесты в watch mode
+npm run test:watch
+
+# Проверить типы TypeScript
+npm run typecheck
+
+# Собрать проект
+npm run build
+```
 
 ## 📦 Структура проекта
 
 ```
 snake-game/
-├── index.html          # Основной файл игры (HTML + CSS + JS)
-├── README.md           # Документация
-├── LICENSE             # Лицензия MIT
+├── src/
+│   ├── __tests__/      # Unit-тесты
+│   ├── Bot.ts          # Логика AI ботов
+│   ├── Game.ts         # Основная игровая логика
+│   ├── constants.ts    # Константы игры
+│   ├── types.ts        # TypeScript типы
+│   ├── utils.ts        # Утилиты
+│   ├── main.ts         # Точка входа
+│   └── style.css       # Стили
+├── index.html          # HTML страница
+├── package.json        # Зависимости
+├── tsconfig.json       # TypeScript конфигурация
+├── vite.config.ts      # Vite + Vitest конфигурация
 └── .github/
     └── workflows/
-        └── deploy.yml  # CI/CD конфигурация
+        └── quality.yml # Quality Pipeline CI/CD
 ```
 
-## 🔧 CI/CD
+## 🔧 Quality Pipeline
 
-Проект использует GitHub Actions для автоматического деплоя:
+Проект использует GitHub Actions с автоматическими проверками:
 
-- ✅ Валидация HTML
-- ✅ Проверка JavaScript синтаксиса
-- ✅ Автоматический деплой на GitHub Pages
-- ✅ Запуск при каждом push в main
+- ✅ **TypeScript check** — проверка типов
+- ✅ **Unit Tests** — запуск всех тестов (15 тестов)
+- ✅ **Build** — сборка проекта с Vite
+- ✅ **Deploy** — автоматический деплой на GitHub Pages
+- ✅ Запуск при каждом push в main и PR
 
 ## 📝 Лицензия
 
